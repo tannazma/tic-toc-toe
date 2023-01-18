@@ -3,6 +3,7 @@
 *::before {
     box-sizing: border-box;
 }
+
 :root {
     --cell-size: 100px;
     --mark-size: calc(var(--cell-size)* .9);
@@ -40,7 +41,9 @@ body {
 }
 
 .cell.x::before,
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:hover::before,
+.board.x .cell:hover::after {
     content: "";
     width: calc(var(--mark-size)* .10);
     height: var(--mark-size);
@@ -48,11 +51,13 @@ body {
     position: absolute;
 }
 
-.cell.x::before {
+.cell.x::before,
+.board.x .cell:hover::before {
     transform: rotate(45deg);
 }
 
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:hover::after {
     transform: rotate(-45deg);
 }
 
