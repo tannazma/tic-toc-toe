@@ -41,13 +41,23 @@ body {
 }
 
 .cell.x::before,
+.cell.x::after {
+    background-color: red;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+    background-color: lightgray;
+}
+
+.cell.x::before,
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after {
     content: "";
     width: calc(var(--mark-size)* .10);
     height: var(--mark-size);
-    background-color: red;
+
     position: absolute;
 }
 
