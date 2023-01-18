@@ -96,3 +96,30 @@ body {
     background-color: white;
 
 }
+
+.winning-message {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.winning-message button {
+    padding: .25em .25em;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.winning-message button:hover{
+    background-color: black;
+    color: white;
+    border-color: white;
+}
