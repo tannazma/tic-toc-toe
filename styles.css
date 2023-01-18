@@ -98,13 +98,14 @@ body {
 }
 
 .winning-message {
+    /* for not display at first */
+    display: none;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, .9);
-    display: flex;
     align-items: center;
     justify-content: center;
     color: white;
@@ -118,8 +119,12 @@ body {
     cursor: pointer;
 }
 
-.winning-message button:hover{
+.winning-message button:hover {
     background-color: black;
     color: white;
     border-color: white;
+}
+
+.winning-message.show {
+    display: flex;
 }
