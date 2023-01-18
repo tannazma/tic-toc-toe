@@ -10,7 +10,14 @@ function handleClick(e) {
     const cell = e.target
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
     placeMark(cell, currentClass)
+    swapTurn()
 }
+
+
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass)
+}
+
+function swapTurn() {
+    circleTurn = !circleTurn
 }
