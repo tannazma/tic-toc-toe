@@ -12,6 +12,8 @@ const WINNING_COMBINATIONS = [
 ]
 const cellElements = document.querySelectorAll(".cell")
 const board = document.getElementById("board")
+const winningMessageElement = document.getElementById("winningMessage")
+const winningMessageTextElement = document.querySelector("[data-wining-message-text]")
 
 let circleTurn
 startGame()
@@ -31,9 +33,10 @@ function handleClick(e) {
     swapTurn()
     setBoardHoverClass()
 
-   if (checkWin(currentClass)){
-    console.log("winner")
-   }
+    if (checkWin(currentClass)) {
+        // console.log("winner")
+        endGame(false)
+    }
 }
 
 
@@ -56,9 +59,18 @@ function setBoardHoverClass() {
 
 function checkWin(currentClass) {
     return WINNING_COMBINATIONS.some(combination => {
-         return combination.every(index => {
-            return cellElements[index].classList.contains(currentClass) 
+        return combination.every(index => {
+            return cellElements[index].classList.contains(currentClass)
         })
     })
 }
 
+
+function endGame(draw) {
+    if (draw) {
+
+    } else {
+        winningMessageTextElement.innerText = `${circleTurn ? "X's" : "O's"} "Win!"`
+    }
+    winningMessageElement.classList.add("show")
+}
