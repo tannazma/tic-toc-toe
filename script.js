@@ -30,13 +30,34 @@ function handleClick(e) {
     const cell = e.target
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
     placeMark(cell, currentClass)
-    swapTurn()
-    setBoardHoverClass()
 
     if (checkWin(currentClass)) {
         // console.log("winner")
         endGame(false)
     }
+    else if (isDraw()) {
+        endGame(true)
+    } else {
+        swapTurn()
+        setBoardHoverClass()
+    }
+}
+
+function endGame(draw) {
+    if (draw) {
+        winningMessageTextElement.innerText = "Draw!"
+    } else {
+        winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} "Win!"`
+    }
+    winningMessageElement.classList.add("show")
+}
+
+function isDraw() {
+    console.log(cellElements)
+    return [...cellElements].every(cell => {
+        return cell.classList.contains(X_CLASS) ||
+            cell.classList.contains(CIRCLE_CLASS)
+    })
 }
 
 
@@ -63,14 +84,4 @@ function checkWin(currentClass) {
             return cellElements[index].classList.contains(currentClass)
         })
     })
-}
-
-
-function endGame(draw) {
-    if (draw) {
-
-    } else {
-        winningMessageTextElement.innerText = `${circleTurn ? "X's" : "O's"} "Win!"`
-    }
-    winningMessageElement.classList.add("show")
 }
